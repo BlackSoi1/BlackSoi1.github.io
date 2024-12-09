@@ -80,7 +80,7 @@ analytics:
 author:
   name: "Xiaolong Li"
   avatar: "profile.png"
-  bio: "Your biography for the left-hand sidebar"
+  # bio: "Your biography for the left-hand sidebar"
   location: "Hong Kong"
   employer: "The University of Hong Kong"
   # pubmed: "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
@@ -94,7 +94,7 @@ author:
   # flickr:
   # facebook:
   # foursquare:
-  github: "academicpages"
+  # github: "academicpages"
   google_plus:
   keybase:
   instagram:
