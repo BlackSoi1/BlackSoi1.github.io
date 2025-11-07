@@ -110,3 +110,41 @@ html, body { background: #fff !important; }
 .author-card .author__urls li { border: 0; padding: 0; }
 .author-card .author__urls a { box-shadow: none; }
 .author-card .author__urls img { max-width: none; max-height: none; }
+/* ── Sidebar link pills: center & autoshrink text ───────────── */
+
+/* 让整行内容居中排列，左右留白更紧凑 */
+.author-card .sidebar-links li > a {
+  justify-content: center;       /* 中心对齐 */
+  gap: 8px;                      /* 图标与文字间距稍微收紧 */
+  padding: 0 10px;               /* 收窄左右内边距 */
+  max-width: 240px;              /* 胶囊最大宽度（可调 220~260） */
+  height: 38px;                  /* 稍微变薄更精致 */
+}
+
+/* 图标始终固定小尺寸 */
+.author-card .sidebar-links li > a img {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  object-fit: contain;
+  display: block;
+  opacity: .85;
+}
+
+/* 文本在容器里自适应缩放 + 居中，不再挤到右侧 */
+.author-card .sidebar-links li > a span {
+  flex: 1 1 auto;                /* 允许占满中间的剩余空间 */
+  text-align: center;            /* 居中 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  /* 自适应字号：最小 13px，通常 14px，最多 15px */
+  font-size: clamp(13px, 0.94rem, 15px);
+}
+
+/* 邮箱通常更长，单独再小一点更保险 */
+.author-card .sidebar-links li:last-child > a span {
+  font-size: clamp(12px, 0.9rem, 14px);
+}
