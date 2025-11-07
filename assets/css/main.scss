@@ -124,3 +124,28 @@
   font-size: 18px;
   color: #3d3d40;
 }
+
+/* ============================================================
+   Remove gray background from main content (pure white page)
+   ============================================================ */
+
+/* 整页背景纯白 */
+html, body { background: #fff !important; }
+
+/* 去掉主内容容器的浅灰底和阴影/圆角（可按需保留圆角） */
+.page,
+.page__content,
+.layout--single .page__content,
+.page__inner-wrap {
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+.page__content {
+  border-radius: 0;               /* 如果你还想保留圆角，把这一行删掉 */
+  border: none;                   /* 主题里可能会加细边，这里一并移除 */
+}
+
+/* 修正主内容与侧栏之间可能的浅灰过渡 */
+.wrapper,
+.archive { background: #fff !important; }
