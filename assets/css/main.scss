@@ -1,150 +1,78 @@
----
----
+/* ===== FINAL: Sidebar link pills (centered & fit) ===== */
 
-/* 引入 Minimal Mistakes 主题与皮肤 */
-@import "minimal-mistakes/skins/default";
-@import "minimal-mistakes";
-
-/* ============ 自定义（Apple Silver 风格） ============ */
-
-/* 让主内容背景纯白 */
-html, body { background: #fff !important; }
-.page,
-.page__content,
-.layout--single .page__content,
-.page__inner-wrap {
-  background: #fff !important;
-  box-shadow: none !important;
-  border: none;
+/* 列表容器 */
+.author-card .sidebar-links{
+  list-style:none;
+  padding:0;
+  margin:14px 0 0;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:stretch;     /* 让子项按宽度拉伸 */
 }
 
-/* Author Card 外观 */
-.author-card {
-  background: #fff;
-  border: 1px solid #d2d2d7;
-  border-radius: 16px;
-  box-shadow: 0 10px 22px rgba(0,0,0,.04);
-  padding: 24px;
-  margin-bottom: 20px;
-  font-family: -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  text-align: center;
+/* 上方 HKU / Hong Kong 两行元信息 */
+.author-card .sidebar-links .meta{
+  text-align:center;
+  color:#555559;
+  font-size:16px;
+  border:0;
+  padding:0;
 }
 
-.author-card .author__avatar { margin-bottom: 16px; }
-.author-card .author__avatar img {
-  border-radius: 50%;
-  width: 120px; height: 120px; object-fit: cover;
-  border: 3px solid #f5f5f7;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+/* 每一行按钮——占满卡片可用宽度并居中 */
+.author-card .sidebar-links li>a{
+  display:flex;
+  align-items:center;
+  justify-content:center;    /* 整体居中 */
+  gap:10px;
+  height:40px;
+  /* 占满 author 卡片内边距后的宽度： */
+  width: calc(100% - 32px);  /* 24px 内边距 + 8px 视觉留白 */
+  margin:0 auto;             /* 居中 */
+  border:1px solid #e5e5ea;
+  border-radius:12px;
+  background:#fff;
+  color:#1d1d1f;
+  text-decoration:none;
+  font-weight:600;
+  transition:background .15s ease, border-color .15s ease, color .15s ease;
+  box-shadow:none;
 }
 
-.author-card .author__name {
-  font-size: 24px; font-weight: 800; color: #1d1d1f;
-  margin: 0 0 10px; letter-spacing: -0.02em;
-}
-.author-card .author__bio { font-size: 15px; color: #555559; margin: 0 0 12px; }
-
-/* ——— 侧栏链接：统一为细边轻圆角行按钮 ——— */
-.author-card .sidebar-links {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: stretch;
+/* 统一小图标，不允许放大 */
+.author-card .sidebar-links li>a img{
+  width:18px;
+  height:18px;
+  flex:0 0 18px;
+  object-fit:contain;
+  display:block;
+  opacity:.9;
 }
 
-.author-card .sidebar-links .meta {
-  color: #555559;
-  font-size: 16px;
-  border: 0;
-  padding: 0;
+/* 文本：默认不截断，必要时降字号保证能放下 */
+.author-card .sidebar-links li>a span{
+  line-height:1;
+  text-align:center;
+  /* 自适应字号：常规 15px，最小 13px，最大 16px */
+  font-size: clamp(13px, 1.6vw, 16px);
+  letter-spacing:-0.01em;
+  white-space:nowrap;
 }
 
-/* 每一行按钮 */
-.author-card .sidebar-links li > a {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  height: 40px;
-  padding: 0 12px;
-  width: 100%;
-  max-width: 260px;
-  margin: 0 auto;
-  border: 1px solid #e5e5ea;
-  border-radius: 12px;
-  background: #fff;
-  color: #1d1d1f;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background .15s ease, border-color .15s ease, color .15s ease;
-  box-shadow: none;
+/* 邮箱一行更易溢出：允许再小一点字号 */
+.author-card .sidebar-links li:last-child>a span{
+  font-size: clamp(12px, 1.5vw, 15px);
 }
 
-/* 小图标：强制 18px，防止按原图放大 */
-.author-card .sidebar-links li > a img {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  object-fit: contain;
-  display: block;
-  opacity: .85;
+/* Hover */
+.author-card .sidebar-links li>a:hover{
+  background:#f5f5f7;
+  border-color:#d2d2d7;
+  color:#0066cc;
 }
 
-/* 文本：邮箱过长省略号 */
-.author-card .sidebar-links li > a span {
-  min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.author-card .sidebar-links li > a:hover {
-  background: #f5f5f7;
-  border-color: #d2d2d7;
-  color: #0066cc;
-}
-
-/* 彻底清掉旧的作者链接样式影响（防止胶囊/阴影残留） */
-.author-card .author__urls li { border: 0; padding: 0; }
-.author-card .author__urls a { box-shadow: none; }
-.author-card .author__urls img { max-width: none; max-height: none; }
-/* ── Sidebar link pills: center & autoshrink text ───────────── */
-
-/* 让整行内容居中排列，左右留白更紧凑 */
-.author-card .sidebar-links li > a {
-  justify-content: center;       /* 中心对齐 */
-  gap: 8px;                      /* 图标与文字间距稍微收紧 */
-  padding: 0 10px;               /* 收窄左右内边距 */
-  max-width: 240px;              /* 胶囊最大宽度（可调 220~260） */
-  height: 38px;                  /* 稍微变薄更精致 */
-}
-
-/* 图标始终固定小尺寸 */
-.author-card .sidebar-links li > a img {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  object-fit: contain;
-  display: block;
-  opacity: .85;
-}
-
-/* 文本在容器里自适应缩放 + 居中，不再挤到右侧 */
-.author-card .sidebar-links li > a span {
-  flex: 1 1 auto;                /* 允许占满中间的剩余空间 */
-  text-align: center;            /* 居中 */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  /* 自适应字号：最小 13px，通常 14px，最多 15px */
-  font-size: clamp(13px, 0.94rem, 15px);
-}
-
-/* 邮箱通常更长，单独再小一点更保险 */
-.author-card .sidebar-links li:last-child > a span {
-  font-size: clamp(12px, 0.9rem, 14px);
-}
+/* 强制清理任何旧规则的干扰（如果还在） */
+.author-card .author__urls li{ border:0; padding:0; }
+.author-card .author__urls a{ box-shadow:none; }
+.author-card .author__urls img{ max-width:none; max-height:none; }
