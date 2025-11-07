@@ -177,3 +177,59 @@ html, body { background: #fff !important; }
 .author-card .author__urls a:hover {
   color: #0066cc;
 }
+
+/* --- Author card icons layout --- */
+.author-card .author__urls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.author-card .author__urls li {
+  border: 0;
+  padding: 0;
+}
+
+/* 图标+文字 链接按钮 */
+.author-card .icon-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f5f7;
+  border: 1px solid #d2d2d7;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1d1f;
+  text-decoration: none;
+  transition: all .15s ease;
+  box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 4px 10px rgba(0,0,0,.04);
+}
+
+.author-card .icon-link:hover {
+  transform: translateY(-1px);
+  background: #f8f8fa;
+  color: #0066cc;
+  border-color: #c7c7cc;
+}
+
+/* 图标尺寸统一 */
+.author-card .icon-img {
+  height: 18px;
+  width: 18px;
+  object-fit: contain;
+  display: inline-block;
+  filter: grayscale(30%) brightness(0.2);
+  opacity: 0.9;
+  transition: opacity .2s ease;
+}
+
+.author-card .icon-link:hover .icon-img {
+  opacity: 1;
+  filter: grayscale(0);
+}
