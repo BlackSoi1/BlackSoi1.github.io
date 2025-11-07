@@ -6,7 +6,7 @@ minimal_mistakes_skin: "default"
 locale: "en-US"
 
 title: "Xiaolong Li"             # 浏览器标签显示的站点名
-title_separator: "—"
+# title_separator: "—"
 name: "Xiaolong Li"              # 结构化数据用
 description: "Ph.D. student at HKU"
 

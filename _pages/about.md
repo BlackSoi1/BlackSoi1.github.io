@@ -192,8 +192,8 @@ h2{
       </div>
       <div class="pub-venue">NeurIPS Main 2025</div>
       <div class="chips">
-        <a class="chip" href="https://arxiv.org/abs/2510.05318" target="_blank">Paper</a>
-        <a class="chip" href="https://bird-interact.github.io/" target="_blank">Code</a>
+        <a class="chip" href="https://arxiv.org/abs/2506.18951" target="_blank">Paper</a>
+        <a class="chip" href="https://bird-critic.github.io/" target="_blank">Code</a>
       </div>
     </li>
 
