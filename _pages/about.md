@@ -15,7 +15,7 @@ redirect_from:
   --link:#0066cc;
   --line:#d2d2d7;
   --card:#ffffff;
-  --page-bg:#fbfbfd;
+  --page-bg:#fff;              /* 纯白 */
   --shadow:0 10px 22px rgba(0,0,0,.04);
   --radius:16px;
 }
@@ -24,8 +24,8 @@ redirect_from:
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",
                Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   color:var(--text);
-  background:var(--page-bg);
-  border-radius:var(--radius);
+  background: transparent;     /* 不再上底色 */
+  border-radius: var(--radius);
   padding:4px;
 }
 
@@ -34,7 +34,9 @@ redirect_from:
   color:var(--text);
 }
 
-.hr{height:1px;background:var(--line);border:0;margin:28px 0}
+/* 之前的 hr 块感知为“灰色区域”，这里直接禁用 */
+.hr{height:0.5px;background:#eee;border:0;margin:20px 0}
+
 
 /* 顶部介绍 */
 .hero{margin-top:8px;margin-bottom:10px}
@@ -54,10 +56,10 @@ redirect_from:
 }
 .mail:hover{transform:translateY(-1px);background:#f8f8fa}
 
-/* 区块标题 */
+/* 区块标题：去掉底部灰线 */
 h2{
   font-size:22px;font-weight:800;margin:4px 0 10px;
-  padding-bottom:8px;border-bottom:1px solid var(--line);
+  padding-bottom:0; border-bottom:0;
 }
 
 /* 卡片 */
@@ -69,11 +71,11 @@ h2{
   padding:18px;
 }
 
-/* ===== Education（改为 Grid 以实现“左对齐但靠右”） ===== */
+/* ===== Education（Grid：左文本/中年份/右logo） ===== */
 .edu-row{
   display:grid;
-  grid-template-columns: 1fr minmax(0, max-content) 96px; /* 左：文本  中：年份  右：logo */
-  column-gap:6px;                  /* 控制年份与 logo 的距离（越小越靠近） */
+  grid-template-columns: 1fr minmax(0, max-content) 96px;
+  column-gap:6px;
   align-items:center;
   padding:14px 0;
 }
@@ -81,7 +83,7 @@ h2{
 .edu-title{font-weight:700;font-size:18px;margin:0 0 4px}
 .edu-sub{font-style:italic;color:var(--muted);margin:0}
 .edu-date{
-  text-align:left;                  /* 左对齐 */
+  text-align:left;
   font-weight:700;color:#3d3d40;white-space:nowrap;
 }
 .edu-right{display:flex;justify-content:flex-end;align-items:center}
@@ -95,7 +97,7 @@ h2{
 .pub-authors{color:var(--muted)}
 .pub-venue{color:var(--link);font-weight:600}
 
-/* 按钮胶囊 */
+/* 银灰胶囊按钮 */
 .chips{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
 .chip{
   display:inline-block;padding:8px 14px;border-radius:999px;
@@ -111,12 +113,9 @@ h2{
 .page__content a{color:var(--link);text-decoration:none}
 .page__content a:hover{text-decoration:underline}
 
-/* 移动端堆叠（可选） */
+/* 移动端 */
 @media (max-width: 720px){
-  .edu-row{
-    grid-template-columns: 1fr;     /* 堆叠：文本在上，年份其下，logo最后 */
-    row-gap:6px;
-  }
+  .edu-row{ grid-template-columns: 1fr; row-gap:6px; }
   .edu-right{justify-content:flex-start}
 }
 </style>
@@ -130,8 +129,6 @@ h2{
   </p>
   <p><a class="mail" href="mailto:xia01ong@connect.hku.hk">✉️ xia01ong[AT]connect.hku.hk</a></p>
 </div>
-
-<hr class="hr">
 
 <h2>Education</h2>
 <div class="card">
@@ -163,8 +160,6 @@ h2{
   </div>
 </div>
 
-<hr class="hr">
-
 <h2>Publications</h2>
 <div class="card">
   <ol style="margin:0;padding-left:20px;">
@@ -186,8 +181,8 @@ h2{
     <li class="pub">
       <div class="pub-title">SWE-SQL: Illuminating LLM Pathways to Solve User SQL Issues in Real-World Applications</div>
       <div class="pub-authors">
-        Jinyang Li*, <strong><em><u>Xiaolong Li</u></em></strong>*, Ge Qu*, Per Jacobsson, Bowen Qin, Binyuan Hui, Shuzheng Si, Nan Huo,
-        Xiaohan Xu, Yue Zhang, Ziwei Tang, Yuanshuai Li, Florensia Widjaja, Xintong Zhu, Feige Zhou, Yongfeng Huang,
+        Jinyang Li*, <strong><em><u>Xiaolong Li</u></em></strong>*, Ge Qu*, Per Jacobsson, Bowen Qin, Binyuan Hui, Shuzheng Si,
+        Nan Huo, Xiaohan Xu, Yue Zhang, Ziwei Tang, Yuanshuai Li, Florensia Widjaja, Xintong Zhu, Feige Zhou, Yongfeng Huang,
         Yannis Papakonstantinou, Fatma Ozcan, Chenhao Ma, Reynold Cheng
       </div>
       <div class="pub-venue">NeurIPS Main 2025</div>
@@ -223,8 +218,6 @@ h2{
   </ol>
 </div>
 
-<hr class="hr">
-
 <h2>Research Project</h2>
 <div class="card">
   <div class="item">
@@ -241,8 +234,6 @@ h2{
   </div>
 </div>
 
-<hr class="hr">
-
 <h2>Awards & Honors</h2>
 <div class="card">
   <ul>
@@ -252,5 +243,4 @@ h2{
   </ul>
 </div>
 
-<hr class="hr">
 <p style="color:var(--muted);font-style:italic">Last updated: Nov 2025</p>
