@@ -25,32 +25,32 @@ Expect site.data.authors[page.author] OR site.author
   </div>
 
 <div class="author__urls-wrapper">
-  <ul class="author__urls author-links">
+  <ul class="author__urls sidebar-links">
     {% if author.employer %}
-      <li class="meta center">{{ author.employer }}</li>
+      <li class="meta">{{ author.employer }}</li>
     {% endif %}
     {% if author.location %}
-      <li class="meta center">{{ author.location }}</li>
+      <li class="meta">{{ author.location }}</li>
     {% endif %}
 
-    <li class="link-row">
-      <a href="https://github.com/{{ author.github }}" target="_blank" rel="noopener" title="GitHub">
-        <img class="link-icon" src="/edu_logo/GitHub.png" alt="">
-        <span class="link-text">GitHub</span>
+    <li>
+      <a href="https://github.com/{{ author.github }}" target="_blank" rel="noopener">
+        <img src="/edu_logo/GitHub.png" alt="">
+        <span>GitHub</span>
       </a>
     </li>
 
-    <li class="link-row">
-      <a href="https://scholar.google.com/citations?hl=en&user=SzdIs0kAAAAJ" target="_blank" rel="noopener" title="Google Scholar">
-        <img class="link-icon" src="/edu_logo/icons8-google-scholar-48.png" alt="">
-        <span class="link-text">Google Scholar</span>
+    <li>
+      <a href="https://scholar.google.com/citations?hl=en&user=SzdIs0kAAAAJ" target="_blank" rel="noopener">
+        <img src="/edu_logo/icons8-google-scholar-48.png" alt="">
+        <span>Google Scholar</span>
       </a>
     </li>
 
-    <li class="link-row">
+    <li>
       <a href="mailto:{{ author.email }}" title="{{ author.email }}">
-        <img class="link-icon" src="/edu_logo/icons8-email-100.png" alt="">
-        <span class="link-text">{{ author.email }}</span>
+        <img src="/edu_logo/icons8-email-100.png" alt="">
+        <span>{{ author.email }}</span>
       </a>
     </li>
   </ul>
