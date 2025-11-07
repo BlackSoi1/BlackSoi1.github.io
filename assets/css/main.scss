@@ -233,3 +233,67 @@ html, body { background: #fff !important; }
   opacity: 1;
   filter: grayscale(0);
 }
+/* ── Sidebar: minimal Apple-like link rows ───────────────────────── */
+
+.author-card .author-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  align-items: center;
+}
+
+.author-card .author-links .meta {
+  border: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #555559;
+}
+.author-card .author-links .meta.center { text-align: center; width: 100%; }
+
+.author-card .link-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.author-card .link-row > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 14px;
+  max-width: 260px;          /* 控制视觉宽度 */
+  width: 100%;
+  border: 1px solid #e5e5ea; /* 细银边 */
+  border-radius: 12px;
+  background: #fff;          /* 纯白，无阴影 */
+  color: #1d1d1f;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+
+.author-card .link-row > a:hover {
+  background: #f5f5f7;
+  border-color: #d2d2d7;
+  color: #0066cc;
+}
+
+.author-card .link-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  opacity: .75;
+}
+
+.author-card .link-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;    /* 邮箱过长时省略号 */
+}
+
+/* 统一与卡片其余元素的间距 */
+.author-card .author__urls li { border: 0; padding: 0; }
