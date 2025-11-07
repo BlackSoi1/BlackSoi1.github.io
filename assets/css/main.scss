@@ -149,3 +149,31 @@ html, body { background: #fff !important; }
 /* 修正主内容与侧栏之间可能的浅灰过渡 */
 .wrapper,
 .archive { background: #fff !important; }
+
+
+/* --- Author card: layout for email + scholar --- */
+.author-card .author__urls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.author-card .author__urls li {
+  border: 0;
+  padding: 4px 0;
+}
+
+.author-card .author__urls a {
+  color: #1d1d1f;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.author-card .author__urls a:hover {
+  color: #0066cc;
+}

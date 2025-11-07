@@ -27,25 +27,34 @@ Expect site.data.authors[page.author] OR site.author
   <div class="author__urls-wrapper">
     <ul class="author__urls social-icons">
       {% if author.employer %}
-        <li style="text-align: center;"><i class="fa fa-fw fa-building" aria-hidden="true"></i> {{ author.employer }}</li>
+        <li><i class="fa fa-fw fa-building" aria-hidden="true"></i> {{ author.employer }}</li>
       {% endif %}
       {% if author.location %}
-        <li style="text-align: center;"><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ author.location }}</li>
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ author.location }}</li>
       {% endif %}
-      {% if author.uri %}
-        <li><a href="{{ author.uri }}"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
-      {% endif %}
-      {% if author.googlescholar %}
-        <li><a href="{{ author.googlescholar }}"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
-      {% endif %}
-      {% if author.linkedin %}
-        <li><a href="https://www.linkedin.com/in/{{ author.linkedin }}"><i class="fab fa-fw fa-linkedin"></i> LinkedIn</a></li>
-      {% endif %}
+
       {% if author.github %}
-        <li><a href="https://github.com/{{ author.github }}"><i class="fab fa-fw fa-github"></i> GitHub</a></li>
+        <li>
+          <a href="https://github.com/{{ author.github }}" target="_blank" rel="noopener">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
       {% endif %}
-      {% if author.twitter %}
-        <li><a href="https://twitter.com/{{ author.twitter }}"><i class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+
+      <!-- Google Scholar 固定链接 -->
+      <li>
+        <a href="https://scholar.google.com/citations?hl=en&user=SzdIs0kAAAAJ" target="_blank" rel="noopener">
+          <i class="fas fa-fw fa-graduation-cap" aria-hidden="true"></i> Google Scholar
+        </a>
+      </li>
+
+      <!-- Email 放在最后一行 -->
+      {% if author.email %}
+        <li>
+          <a href="mailto:{{ author.email }}">
+            <i class="fas fa-fw fa-envelope" aria-hidden="true"></i> {{ author.email }}
+          </a>
+        </li>
       {% endif %}
     </ul>
   </div>

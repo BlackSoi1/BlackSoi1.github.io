@@ -44,18 +44,6 @@ redirect_from:
 .hero .sub{font-size:clamp(16px,2vw,18px);line-height:1.65;color:var(--muted)}
 .hero .mono{font-weight:600;color:var(--text)}
 
-/* Email 胶囊 */
-.mail{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 16px;border-radius:999px;
-  background:#f5f5f7;border:1px solid var(--line);
-  color:var(--text);font-weight:700;font-size:14px;
-  box-shadow:0 1px 0 rgba(255,255,255,.8) inset,var(--shadow);
-  transition:transform .12s ease,background .12s ease;
-  text-decoration:none;
-}
-.mail:hover{transform:translateY(-1px);background:#f8f8fa}
-
 /* 区块标题：去掉底部灰线 */
 h2{
   font-size:22px;font-weight:800;margin:4px 0 10px;
@@ -127,7 +115,6 @@ h2{
     advised by <a href="https://www.reynold.hku.hk/" target="_blank">Professor Reynold C.K. Cheng</a>.
     My research focuses on <span class="mono">data-centric code generation</span>: Text-to-SQL, code agents, and automated data science workflows.
   </p>
-  <p><a class="mail" href="mailto:xia01ong@connect.hku.hk">✉️ xia01ong[AT]connect.hku.hk</a></p>
 </div>
 
 <h2>Education</h2>

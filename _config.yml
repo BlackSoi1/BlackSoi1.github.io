@@ -19,13 +19,13 @@ repository: "BlackSoi1/BlackSoi1.github.io"
 # ─────────────────────────────────────────────────────────
 author:
   name: "Xiaolong Li"
-  avatar: "lixiaolong.jpg"       # 放在 /images/ 下
+  avatar: "lixiaolong.jpg"
   employer: "HKU"
   location: "Hong Kong"
-  email: "xia01ong@connect.hku.hk"
   github: "BlackSoi1"
+  email: "xia01ong@connect.hku.hk"
   # linkedin: "your-linkedin"
-  # googlescholar: "https://scholar.google.com/xxxx"
+  googlescholar: "https://scholar.google.com/citations?hl=en&user=SzdIs0kAAAAJ"
 
 # ─────────────────────────────────────────────────────────
 # Plugins（要包含 remote-theme 与 include-cache）
