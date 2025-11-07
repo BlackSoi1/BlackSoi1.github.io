@@ -1,55 +1,256 @@
 ---
 permalink: /
-title: "About me"
-excerpt: "About me"
+title: ""              # 置空以只显示 site.title（Xiaolong Li）
+excerpt: "Xiaolong Li"
 author_profile: true
-redirect_from: 
+redirect_from:
   - /about/
   - /about.html
 ---
 
-Hi, I am Xiaolong Li, a research assistant and advised by Professor Reynold C.K. Cheng at the University of Hong Kong. I am interested in Text-to-SQL, Data Science Code Generation, LLM Agent. 
+<style>
+:root{
+  --text:#1d1d1f;
+  --muted:#555559;
+  --link:#0066cc;
+  --line:#d2d2d7;
+  --card:#ffffff;
+  --page-bg:#fbfbfd;
+  --shadow:0 10px 22px rgba(0,0,0,.04);
+  --radius:16px;
+}
 
-## Education
+.page__content{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",
+               Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  color:var(--text);
+  background:var(--page-bg);
+  border-radius:var(--radius);
+  padding:4px;
+}
 
-- **The University of Hong Kong**  
-  *Master of Science in Computer Science (General Track)*  
-  **Nov 2024**  
-  - Overall GPA: 3.8/4.0  
-  - Graduate with **Distinction**
+.page__content h1,.page__content h2,.page__content h3{
+  letter-spacing:-.02em;
+  color:var(--text);
+}
 
-- **The University of British Columbia**  
-  *Bachelor of Science in Computer Science*  
-  **Mar 2023**  
-  - Overall GPA: 3.8/4.0  
-  - **Dean’s Honour List** (Nov 2021)  
-  - Graduate with **Distinction**
+.hr{height:1px;background:var(--line);border:0;margin:28px 0}
 
-## Research Experience
-### [BIRD-SQL](https://bird-bench.github.io/): Data Quality Check, Submission Evaluation, and Metric Analysis & Optimization  
+/* 顶部介绍 */
+.hero{margin-top:8px;margin-bottom:10px}
+.hero h1{font-size:clamp(30px,4.2vw,42px);font-weight:700;margin:0 0 6px}
+.hero .sub{font-size:clamp(16px,2vw,18px);line-height:1.65;color:var(--muted)}
+.hero .mono{font-weight:600;color:var(--text)}
 
-**May 2024 — Aug 2024**  
+/* Email 胶囊 */
+.mail{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 16px;border-radius:999px;
+  background:#f5f5f7;border:1px solid var(--line);
+  color:var(--text);font-weight:700;font-size:14px;
+  box-shadow:0 1px 0 rgba(255,255,255,.8) inset,var(--shadow);
+  transition:transform .12s ease,background .12s ease;
+  text-decoration:none;
+}
+.mail:hover{transform:translateY(-1px);background:#f8f8fa}
 
-- Performed comprehensive data quality checks on the BIRD dataset development set to ensure data integrity and consistency.
-- Evaluated more than 30 submissions from companies and universities, including cutting-edge text-to-SQL parsers from [Google Cloud](https://arxiv.org/abs/2410.01943), AT&T, and [Distyl AI](https://arxiv.org/abs/2408.07702) on the BIRD benchmark.
-- Developed two novel text-to-SQL evaluation metrics:
-  - **Soft-F1 score**: A more lenient metric that reduces the impact of column order and missing values in the tables produced by predicted SQL queries, providing a more accurate assessment of parser performance.
-  - **R-VES (Reward-based VES)**: A metric for measuring the efficiency of text-to-SQL parsers using discrete functions.
+/* 区块标题 */
+h2{
+  font-size:22px;font-weight:800;margin:4px 0 10px;
+  padding-bottom:8px;border-bottom:1px solid var(--line);
+}
 
----
+/* 卡片 */
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:18px;
+}
 
-### [BIRD-SQL Mini-Dev](https://github.com/bird-bench/mini_dev): A Multilingual, Lightweight Version of the BIRD Development Set   
-**May 2024 — Aug 2024**  
+/* ===== Education（改为 Grid 以实现“左对齐但靠右”） ===== */
+.edu-row{
+  display:grid;
+  grid-template-columns: 1fr minmax(0, max-content) 96px; /* 左：文本  中：年份  右：logo */
+  column-gap:6px;                  /* 控制年份与 logo 的距离（越小越靠近） */
+  align-items:center;
+  padding:14px 0;
+}
+.edu-left{min-width:0}
+.edu-title{font-weight:700;font-size:18px;margin:0 0 4px}
+.edu-sub{font-style:italic;color:var(--muted);margin:0}
+.edu-date{
+  text-align:left;                  /* 左对齐 */
+  font-weight:700;color:#3d3d40;white-space:nowrap;
+}
+.edu-right{display:flex;justify-content:flex-end;align-items:center}
+.logo{height:48px;object-fit:contain;display:block}
+.logo.ubc{transform:scale(1.12);transform-origin:right center}
 
-- Designed the Mini-Dev dataset to facilitate efficient and cost-effective development cycles.
-- Reduced the development set size from 1,534 to 500 examples by prioritizing error correction and ensuring a balanced difficulty distribution. The subset includes all relevant keywords as outlined in the BIRD benchmark and samples across all databases.
-- Enhanced the practicality of the BIRD system by supporting multiple SQL dialects, including MySQL and PostgreSQL, to better align with industry applications.
-- Collaborated with Arcwise, an AI data analysis company, to conduct a comprehensive analysis of the BIRD Mini-Dev dataset, further improving the dataset's robustness and reliability.
-- Evaluated Mini-Dev baseline performance on over 10 models, demonstrating comparable performance to the full test set and confirming its representativeness of the BIRD dataset's features and attributes.
+/* Publications */
+.pub{display:grid;gap:8px}
+.pub + .pub{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
+.pub-title{font-weight:800}
+.pub-authors{color:var(--muted)}
+.pub-venue{color:var(--link);font-weight:600}
 
-## Work Experience
-### Teaching Assistant / Introduction to Relational Databases  
-**Department of Computer Science, The University of British Columbia**  
-**July 2022 — Dec 2022**  
-- Assisted professor in lecture preparation, including topics such as database systems, ER models, normalization, formal relational query language, and SQL, as well as curriculum discussions and student feedback collection.
-- Graded assignments, mentored group projects, and maintained workflow.
+/* 按钮胶囊 */
+.chips{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+.chip{
+  display:inline-block;padding:8px 14px;border-radius:999px;
+  background:#f5f5f7;border:1px solid #c7c7cc;color:#1d1d1f;
+  font-weight:700;font-size:13px;text-decoration:none;
+  box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+  transition:transform .12s ease,background .12s ease;
+}
+.chip:hover{transform:translateY(-1px);background:#f8f8fa}
+
+/* 项目 */
+.item + .item{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.page__content a{color:var(--link);text-decoration:none}
+.page__content a:hover{text-decoration:underline}
+
+/* 移动端堆叠（可选） */
+@media (max-width: 720px){
+  .edu-row{
+    grid-template-columns: 1fr;     /* 堆叠：文本在上，年份其下，logo最后 */
+    row-gap:6px;
+  }
+  .edu-right{justify-content:flex-start}
+}
+</style>
+
+<div class="hero">
+  <h1>Xiaolong Li</h1>
+  <p class="sub">
+    I am a first-year Ph.D. student in Computer Science at <span class="mono">The University of Hong Kong (HKU)</span>,
+    advised by <a href="https://www.reynold.hku.hk/" target="_blank">Professor Reynold C.K. Cheng</a>.
+    My research focuses on <span class="mono">data-centric code generation</span>: Text-to-SQL, code agents, and automated data science workflows.
+  </p>
+  <p><a class="mail" href="mailto:xia01ong@connect.hku.hk">✉️ xia01ong[AT]connect.hku.hk</a></p>
+</div>
+
+<hr class="hr">
+
+<h2>Education</h2>
+<div class="card">
+  <div class="edu-row">
+    <div class="edu-left">
+      <p class="edu-title">The University of Hong Kong</p>
+      <p class="edu-sub">Ph.D in Department of Computer Science</p>
+    </div>
+    <div class="edu-date">2025-Sep. – Now</div>
+    <div class="edu-right"><img class="logo" src="/edu_logo/hku.jpg" alt="HKU"></div>
+  </div>
+
+  <div class="edu-row">
+    <div class="edu-left">
+      <p class="edu-title">The University of Hong Kong</p>
+      <p class="edu-sub">Master of Science in Computer Science (General Track)</p>
+    </div>
+    <div class="edu-date">2023-Sep. – 2024-Nov.</div>
+    <div class="edu-right"><img class="logo" src="/edu_logo/hku.jpg" alt="HKU"></div>
+  </div>
+
+  <div class="edu-row">
+    <div class="edu-left">
+      <p class="edu-title">The University of British Columbia</p>
+      <p class="edu-sub">Bachelor of Science in Computer Science</p>
+    </div>
+    <div class="edu-date">2019-Sep. – 2023-May</div>
+    <div class="edu-right"><img class="logo ubc" src="/edu_logo/ubc.jpg" alt="UBC"></div>
+  </div>
+</div>
+
+<hr class="hr">
+
+<h2>Publications</h2>
+<div class="card">
+  <ol style="margin:0;padding-left:20px;">
+    <li class="pub">
+      <div class="pub-title">BIRD-INTERACT: Re-imagining Text-to-SQL Evaluation via Lens of Dynamic Interactions</div>
+      <div class="pub-authors">
+        Nan Huo, Xiaohan Xu, Jinyang Li, Per Jacobsson, Shipei Lin, Bowen Qin, Binyuan Hui,
+        <strong><em><u>Xiaolong Li</u></em></strong>, Ge Qu, Shuzheng Si, Linheng Han, Edward Alexander, Xintong Zhu,
+        Rui Qin, Ruihan Yu, Yiyao Jin, Feige Zhou, Weihao Zhong, Yun Chen, Hongyu Liu, Chenhao Ma, Fatma Ozcan,
+        Yannis Papakonstantinou, Reynold Cheng
+      </div>
+      <div class="pub-venue"><a href="https://arxiv.org/abs/2510.05318" target="_blank">Arxiv 2025</a></div>
+      <div class="chips">
+        <a class="chip" href="https://arxiv.org/abs/2510.05318" target="_blank">Paper</a>
+        <a class="chip" href="https://bird-interact.github.io/" target="_blank">Code</a>
+      </div>
+    </li>
+
+    <li class="pub">
+      <div class="pub-title">SWE-SQL: Illuminating LLM Pathways to Solve User SQL Issues in Real-World Applications</div>
+      <div class="pub-authors">
+        Jinyang Li*, <strong><em><u>Xiaolong Li</u></em></strong>*, Ge Qu*, Per Jacobsson, Bowen Qin, Binyuan Hui, Shuzheng Si, Nan Huo,
+        Xiaohan Xu, Yue Zhang, Ziwei Tang, Yuanshuai Li, Florensia Widjaja, Xintong Zhu, Feige Zhou, Yongfeng Huang,
+        Yannis Papakonstantinou, Fatma Ozcan, Chenhao Ma, Reynold Cheng
+      </div>
+      <div class="pub-venue">NeurIPS Main 2025</div>
+      <div class="chips">
+        <a class="chip" href="https://arxiv.org/abs/2510.05318" target="_blank">Paper</a>
+        <a class="chip" href="https://bird-interact.github.io/" target="_blank">Code</a>
+      </div>
+    </li>
+
+    <li class="pub">
+      <div class="pub-title">SHARE: An SLM-based Hierarchical Action CorREction Assistant for Text-to-SQL</div>
+      <div class="pub-authors">
+        Ge Qu, Jinyang Li, Bowen Qin, <strong><em><u>Xiaolong Li</u></em></strong>, Nan Huo, Chenhao Ma, Reynold Cheng
+      </div>
+      <div class="pub-venue">ACL Main 2025</div>
+      <div class="chips">
+        <a class="chip" href="https://arxiv.org/abs/2506.00391" target="_blank">Paper</a>
+        <a class="chip" href="https://github.com/quge2023/SHARE" target="_blank">Code</a>
+      </div>
+    </li>
+
+    <li class="pub">
+      <div class="pub-title">Micro-Act: Mitigate Knowledge Conflict in Question Answering via Actionable Self-Reasoning</div>
+      <div class="pub-authors">
+        Nan Huo, Jinyang Li, Bowen Qin, Ge Qu, <strong><em><u>Xiaolong Li</u></em></strong>, Xiaodong Li, Chenhao Ma, Reynold Cheng
+      </div>
+      <div class="pub-venue">ACL Main 2025</div>
+      <div class="chips">
+        <a class="chip" href="https://arxiv.org/abs/2506.05278" target="_blank">Paper</a>
+        <a class="chip" href="https://github.com/Noah-Flame/Micro-Act" target="_blank">Code</a>
+      </div>
+    </li>
+  </ol>
+</div>
+
+<hr class="hr">
+
+<h2>Research Project</h2>
+<div class="card">
+  <div class="item">
+    <p><a href="https://github.com/bird-bench/mini_dev" target="_blank"><strong>BIRD-SQL Mini-Dev</strong></a>: A Multilingual, Lightweight Version of the BIRD Development Set</p>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:8px;">May 2024 — Aug 2024</p>
+    <ul>
+      <li><strong>Update 2025-07-22</strong>: Released V2 with 780 instances (500 SELECT-only + 270 CRUD across 18 DBs). Added JSON ops and multi-dialect support (PostgreSQL, SQLite). See <a href="https://livesqlbench.ai/" target="_blank">LiveSQLBench</a>.</li>
+      <li>A lite development set for fast, cost-effective Text-to-SQL iteration. 500 high-quality pairs across 11 DBs in MySQL & PostgreSQL. Introduces R-VES (efficiency) and Soft-F1 (accuracy).</li>
+    </ul>
+    <div class="chips">
+      <a class="chip" href="https://github.com/bird-bench/mini_dev" target="_blank">GitHub</a>
+      <a class="chip" href="https://huggingface.co/datasets/birdsql/bird_mini_dev" target="_blank">HuggingFace</a>
+    </div>
+  </div>
+</div>
+
+<hr class="hr">
+
+<h2>Awards & Honors</h2>
+<div class="card">
+  <ul>
+    <li><strong>Postgraduate Scholarship (PGS)</strong> — The University of Hong Kong, 2025</li>
+    <li><strong>Dean’s Honour List</strong> — University of British Columbia, 2021</li>
+    <li><strong>Graduate with Distinction</strong> — UBC (B.Sc.) & HKU (M.Sc.)</li>
+  </ul>
+</div>
+
+<hr class="hr">
+<p style="color:var(--muted);font-style:italic">Last updated: Nov 2025</p>
