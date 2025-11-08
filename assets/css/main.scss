@@ -217,3 +217,36 @@ article.page {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+
+
+/* ==== Author Card 永远常亮（放在 main.scss 最末尾） ==== */
+
+/* 头像：覆盖所有可能的选择器 */
+.sidebar .author__avatar img,
+.author-card .author__avatar img,
+.author__avatar img {
+  -webkit-filter: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* 卡片：默认与 hover 都不变暗/变灰 */
+.sidebar .author-card,
+.author-card,
+.sidebar .author-card:hover,
+.author-card:hover {
+  -webkit-filter: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+/* 保险：把卡片里所有子元素的滤镜/混合模式也清掉 */
+.author-card *, .author-card *::before, .author-card *::after {
+  -webkit-filter: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+}
