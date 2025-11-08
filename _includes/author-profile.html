@@ -11,7 +11,7 @@ Put this file at: _includes/author-profile.html
   {% assign author = site.author %}
 {% endif %}
 
-<div itemscope itemtype="http://schema.org/Person" class="author-card" 
+<div itemscope itemtype="http://schema.org/Person" class="author-card"
      style="-webkit-filter:none!important;filter:none!important;opacity:1!important;transition:none!important;mix-blend-mode:normal!important;">
 
   <div class="author__avatar">
@@ -69,17 +69,3 @@ Put this file at: _includes/author-profile.html
     </ul>
   </div>
 </div>
-
-<style>
-/* 最后再加一层兜底 CSS 确保灰度彻底关闭 */
-.author-card,
-.author-card:hover,
-.author__avatar img,
-.author__avatar img:hover {
-  -webkit-filter: none !important;
-  filter: none !important;
-  opacity: 1 !important;
-  transition: none !important;
-  mix-blend-mode: normal !important;
-}
-</style>
