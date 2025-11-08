@@ -91,6 +91,24 @@ redirect_from:
   .edu-row{grid-template-columns:1fr;row-gap:6px;}
   .edu-right{justify-content:flex-start;}
 }
+
+/* 1) 隐藏左上角汉堡菜单（没有导航时不显示） */
+.masthead .greedy-nav__toggle { 
+  display: none !important; 
+}
+
+/* 2) 桌面端增大左栏与正文的间距 */
+@media (min-width: 1024px) {
+  /* 给右侧主列加一个向右的安全间距 */
+  .page { 
+    margin-left: 22px;   /* 想更靠右可调到 26~32px */
+  }
+  
+  /* 如果你的主题在 .sidebar 上没有外边距，可同时给左栏一个右外边距，间距更自然 */
+  .sidebar { 
+    margin-right: 6px;   /* 与上面的 22px 配合形成更舒适的 gutter */
+  }
+}
 </style>
 
 
