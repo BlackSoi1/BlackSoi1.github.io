@@ -15,98 +15,84 @@ redirect_from:
   --link:#0066cc;
   --line:#d2d2d7;
   --card:#ffffff;
-  --page-bg:#fff;              /* 纯白 */
-  --shadow:0 10px 22px rgba(0,0,0,.04);
-  --radius:16px;
+  --page-bg:#fff;
+  --shadow:0 6px 14px rgba(0,0,0,.03);
+  --radius:14px;
 }
 
 .page__content{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",
                Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   color:var(--text);
-  background: transparent;     /* 不再上底色 */
-  border-radius: var(--radius);
+  background:transparent;
   padding:4px;
+  font-size:15px;          /* 正文整体稍小 */
+  line-height:1.6;
 }
 
-.page__content h1,.page__content h2,.page__content h3{
-  letter-spacing:-.02em;
-  color:var(--text);
-}
+.page__content h1{font-size:32px;margin-bottom:6px;}
+.page__content h2{font-size:20px;font-weight:700;margin:20px 0 10px;}
+.page__content h3{font-size:18px;}
 
-/* 之前的 hr 块感知为“灰色区域”，这里直接禁用 */
-.hr{height:0.5px;background:#eee;border:0;margin:20px 0}
-
+.hr{height:0.5px;background:#eee;border:0;margin:16px 0}
 
 /* 顶部介绍 */
-.hero{margin-top:8px;margin-bottom:10px}
-.hero h1{font-size:clamp(30px,4.2vw,42px);font-weight:700;margin:0 0 6px}
-.hero .sub{font-size:clamp(16px,2vw,18px);line-height:1.65;color:var(--muted)}
-.hero .mono{font-weight:600;color:var(--text)}
+.hero{margin-top:6px;margin-bottom:10px;}
+.hero h1{font-size:34px;font-weight:700;margin:0 0 6px;}
+.hero .sub{font-size:15px;line-height:1.6;color:var(--muted);}
+.hero .mono{font-weight:600;color:var(--text);}
 
-/* 区块标题：去掉底部灰线 */
-h2{
-  font-size:22px;font-weight:800;margin:4px 0 10px;
-  padding-bottom:0; border-bottom:0;
-}
-
-/* 卡片 */
+/* 卡片整体收窄 padding + 阴影更轻 */
 .card{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
-  padding:18px;
+  padding:14px 16px;
 }
 
-/* ===== Education（Grid：左文本/中年份/右logo） ===== */
+/* Education */
 .edu-row{
   display:grid;
-  grid-template-columns: 1fr minmax(0, max-content) 96px;
+  grid-template-columns:1fr minmax(0,max-content) 80px; /* 缩短 logo 列宽 */
   column-gap:6px;
   align-items:center;
-  padding:14px 0;
+  padding:10px 0;
 }
-.edu-left{min-width:0}
-.edu-title{font-weight:700;font-size:18px;margin:0 0 4px}
-.edu-sub{font-style:italic;color:var(--muted);margin:0}
-.edu-date{
-  text-align:left;
-  font-weight:700;color:#3d3d40;white-space:nowrap;
-}
-.edu-right{display:flex;justify-content:flex-end;align-items:center}
-.logo{height:48px;object-fit:contain;display:block}
-.logo.ubc{transform:scale(1.12);transform-origin:right center}
+.edu-title{font-weight:600;font-size:16px;margin:0 0 2px;}
+.edu-sub{font-style:italic;color:var(--muted);font-size:14px;margin:0;}
+.edu-date{text-align:left;font-weight:600;color:#3d3d40;font-size:14px;}
+.logo{height:40px;object-fit:contain;display:block;}
+.logo.ubc{transform:scale(1.1);transform-origin:right center;}
 
 /* Publications */
-.pub{display:grid;gap:8px}
-.pub + .pub{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
-.pub-title{font-weight:800}
-.pub-authors{color:var(--muted)}
-.pub-venue{color:var(--link);font-weight:600}
+.pub{display:grid;gap:6px;font-size:15px;}
+.pub + .pub{border-top:1px solid var(--line);padding-top:12px;margin-top:12px;}
+.pub-title{font-weight:700;font-size:15px;}
+.pub-authors{color:var(--muted);font-size:14px;}
+.pub-venue{color:var(--link);font-weight:600;font-size:14px;}
 
-/* 银灰胶囊按钮 */
-.chips{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+/* 按钮胶囊 */
+.chips{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;}
 .chip{
-  display:inline-block;padding:8px 14px;border-radius:999px;
+  display:inline-block;padding:6px 12px;border-radius:999px;
   background:#f5f5f7;border:1px solid #c7c7cc;color:#1d1d1f;
-  font-weight:700;font-size:13px;text-decoration:none;
+  font-weight:600;font-size:13px;text-decoration:none;
   box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
   transition:transform .12s ease,background .12s ease;
 }
-.chip:hover{transform:translateY(-1px);background:#f8f8fa}
+.chip:hover{transform:translateY(-1px);background:#f8f8fa;}
 
-/* 项目 */
-.item + .item{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
-.page__content a{color:var(--link);text-decoration:none}
-.page__content a:hover{text-decoration:underline}
+.item + .item{border-top:1px solid var(--line);padding-top:10px;margin-top:10px;}
+.page__content a{color:var(--link);text-decoration:none;}
+.page__content a:hover{text-decoration:underline;}
 
-/* 移动端 */
-@media (max-width: 720px){
-  .edu-row{ grid-template-columns: 1fr; row-gap:6px; }
-  .edu-right{justify-content:flex-start}
+@media (max-width:720px){
+  .edu-row{grid-template-columns:1fr;row-gap:6px;}
+  .edu-right{justify-content:flex-start;}
 }
 </style>
+
 
 <div class="hero">
   <h1>Xiaolong Li</h1>
