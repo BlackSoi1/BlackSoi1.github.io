@@ -5,7 +5,9 @@
 @import "minimal-mistakes/skins/default";
 @import "minimal-mistakes";
 
-/* ============ 自定义（Apple Silver 风格） ============ */
+/* =========================================================
+   自定义（Apple Silver 风格）
+   ========================================================= */
 
 /* 让主内容背景纯白 */
 html, body { background: #fff !important; }
@@ -18,7 +20,7 @@ html, body { background: #fff !important; }
   border: none;
 }
 
-/* Author Card 外观 */
+/* ===================== Author Card 外观 ===================== */
 .author-card {
   background: #fff;
   border: 1px solid #d2d2d7;
@@ -28,15 +30,27 @@ html, body { background: #fff !important; }
   margin-bottom: 20px;
   font-family: -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   text-align: center;
+
+  /* —— 常亮，不受 hover 影响 —— */
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none !important;
 }
 
+/* 防止 hover 改变亮度（卡片与头像都常亮） */
+.author-card:hover { filter: none !important; opacity: 1 !important; }
+
+/* 头像容器 */
 .author-card .author__avatar {
   margin-bottom: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.author-card .author__avatar img {
+
+/* 头像图片（常亮、无灰） */
+.author-card .author__avatar img,
+.author__avatar img {
   border-radius: 50% !important;
   width: 120px !important;
   height: 120px !important;
@@ -44,14 +58,17 @@ html, body { background: #fff !important; }
   border: 3px solid #f5f5f7 !important;
   box-shadow: 0 4px 12px rgba(0,0,0,.08) !important;
   display: block !important;
-  aspect-ratio: 1 / 1 !important;  /* 确保是正圆形 */
-  margin: 0 auto !important;  /* 居中 */
-  transition: none !important;  /* 禁用所有过渡效果 */
-  opacity: 1 !important;  /* 确保完全不透明 */
-  filter: none !important;  /* 移除所有滤镜 */
+  aspect-ratio: 1 / 1 !important;
+  margin: 0 auto !important;
+
+  /* 关键：彻底取消主题的灰度与过渡 */
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none !important;
   transform: none !important;
 }
-/* 强制覆盖所有hover效果 */
+
+/* 取消任何可能的 hover 变化（双保险） */
 .author-card .author__avatar img:hover,
 .author-card .author__avatar:hover img,
 .author__avatar img:hover,
@@ -64,13 +81,21 @@ html, body { background: #fff !important; }
   transition: none !important;
 }
 
+/* 标题与简介 */
 .author-card .author__name {
-  font-size: 24px; font-weight: 800; color: #1d1d1f;
-  margin: 0 0 10px; letter-spacing: -0.02em;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1d1d1f;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
 }
-.author-card .author__bio { font-size: 15px; color: #555559; margin: 0 0 12px; }
+.author-card .author__bio {
+  font-size: 15px;
+  color: #555559;
+  margin: 0 0 12px;
+}
 
-/* ——— 侧栏链接：统一为细边轻圆角行按钮 ——— */
+/* ========== 侧栏链接：细边轻圆角行按钮，常亮状态 ========== */
 .author-card .sidebar-links {
   list-style: none;
   padding: 0;
@@ -88,15 +113,16 @@ html, body { background: #fff !important; }
   padding: 0;
 }
 
-/* 每一行按钮 - 常亮状态 */
+/* 行按钮（始终常亮） */
 .author-card .sidebar-links li > a {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  height: 40px;
-  padding: 0 12px;
+  justify-content: center; /* 中心对齐 */
+  gap: 8px;
+  height: 38px;            /* 微薄更精致 */
+  padding: 0 10px;
   width: 100%;
-  max-width: 260px;
+  max-width: 240px;        /* 胶囊最大宽度 */
   margin: 0 auto;
   border: 1px solid #d2d2d7;
   border-radius: 12px;
@@ -108,7 +134,7 @@ html, body { background: #fff !important; }
   box-shadow: none;
 }
 
-/* 小图标：强制 18px，防止按原图放大 */
+/* 小图标固定尺寸 */
 .author-card .sidebar-links li > a img {
   width: 18px;
   height: 18px;
@@ -118,83 +144,43 @@ html, body { background: #fff !important; }
   opacity: .85;
 }
 
-/* 文本：邮箱过长省略号 */
+/* 文本自适应并居中，过长省略 */
 .author-card .sidebar-links li > a span {
-  min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* 移除hover效果 */
-
-/* 彻底清掉旧的作者链接样式影响（防止胶囊/阴影残留） */
-.author-card .author__urls li { border: 0; padding: 0; }
-.author-card .author__urls a { box-shadow: none; }
-.author-card .author__urls img { max-width: none; max-height: none; }
-/* ── Sidebar link pills: center & autoshrink text ───────────── */
-
-/* 让整行内容居中排列，左右留白更紧凑 */
-.author-card .sidebar-links li > a {
-  justify-content: center;       /* 中心对齐 */
-  gap: 8px;                      /* 图标与文字间距稍微收紧 */
-  padding: 0 10px;               /* 收窄左右内边距 */
-  max-width: 240px;              /* 胶囊最大宽度（可调 220~260） */
-  height: 38px;                  /* 稍微变薄更精致 */
-}
-
-/* 图标始终固定小尺寸 */
-.author-card .sidebar-links li > a img {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  object-fit: contain;
-  display: block;
-  opacity: .85;
-}
-
-/* 文本在容器里自适应缩放 + 居中，不再挤到右侧 */
-.author-card .sidebar-links li > a span {
-  flex: 1 1 auto;                /* 允许占满中间的剩余空间 */
-  text-align: center;            /* 居中 */
+  flex: 1 1 auto;
+  text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 600;
   letter-spacing: -0.01em;
-  font-size: 15px;               /* 统一字号 */
+  font-size: 15px;
 }
 
-/* ============ 隐藏整个顶部导航栏 ============ */
+/* 清除 Minimal Mistakes 可能残留的胶囊/阴影样式 */
+.author-card .author__urls li { border: 0; padding: 0; }
+.author-card .author__urls a { box-shadow: none; }
+.author-card .author__urls img { max-width: none; max-height: none; }
+
+/* ===================== 隐藏顶部导航栏 ===================== */
 .masthead {
   display: none !important;
   height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
 }
-
-.greedy-nav button {
-  display: none !important;
-}
+.greedy-nav button { display: none !important; }
 
 /* ============ 增加 Author Card 与正文之间的横向距离 ============ */
 @media (min-width: 64em) {
-  .sidebar {
-    margin-right: 3em;  /* 增加右边距，拉开与正文的距离 */
-  }
-
-  .page {
-    padding-left: 2em;  /* 增加左内边距 */
-  }
+  .sidebar { margin-right: 3em; }
+  .page { padding-left: 2em; }
 }
 
-/* ============ 彻底解决顶部留白问题 ============ */
-/* 1. 减少主内容区域的上边距 */
-#main {
-  margin-top: 0.5em !important;
-}
+/* ===================== 彻底解决顶部留白 ===================== */
+/* 1) 减少主内容区域的上边距 */
+#main { margin-top: 0.5em !important; }
 
-/* 2. 隐藏空的 page__hero */
+/* 2) 隐藏空的 page__hero */
 .page__hero, .page__hero--overlay {
   display: none !important;
   height: 0 !important;
@@ -202,13 +188,13 @@ html, body { background: #fff !important; }
   padding: 0 !important;
 }
 
-/* 3. 移除 .page__inner-wrap 的顶部空隙 */
+/* 3) 移除 .page__inner-wrap 的顶部空隙 */
 .page__inner-wrap {
   padding-top: 0 !important;
   margin-top: 0 !important;
 }
 
-/* 4. 强制隐藏空的 page__title（这是导致留白的真正元凶） */
+/* 4) 强制隐藏空的 page__title（真正元凶） */
 .page__title {
   display: none !important;
   height: 0 !important;
@@ -217,7 +203,7 @@ html, body { background: #fff !important; }
   line-height: 0 !important;
 }
 
-/* 5. 彻底移除 header 的所有间距和显示 */
+/* 5) 彻底移除 header 的所有间距和显示 */
 .page__inner-wrap > header {
   display: none !important;
   height: 0 !important;
@@ -226,30 +212,8 @@ html, body { background: #fff !important; }
   line-height: 0 !important;
 }
 
-/* 6. 移除article.page的顶部间距 */
+/* 6) 移除 article.page 的顶部间距 */
 article.page {
   margin-top: 0 !important;
   padding-top: 0 !important;
-}
-
-/* --- 去掉头像灰色 hover 效果 --- */
-.author__avatar img {
-  filter: none !important;
-  opacity: 1 !important;
-  transition: none !important;
-}
-
-/* --- 如果卡片整体变亮，也一并取消 --- */
-.author-card {
-  filter: none !important;
-  opacity: 1 !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 可选: 让它看起来微微浮起 */
-  transition: none !important;
-}
-
-/* 防止 hover 改变亮度 */
-.author-card:hover,
-.author__avatar img:hover {
-  filter: none !important;
-  opacity: 1 !important;
 }
