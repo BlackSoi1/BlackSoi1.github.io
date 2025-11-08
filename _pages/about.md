@@ -173,7 +173,7 @@ article.page{
 <div class="content-container">
 
 <div class="hero">
-  <h1>Xiaolong Li</h1>
+  <h1>About Me</h1>
   <p class="sub">
     I am a first-year Ph.D. student in Computer Science at <span class="mono">The University of Hong Kong (HKU)</span>,
     advised by <a href="https://www.reynold.hku.hk/" target="_blank">Professor Reynold C.K. Cheng</a>.

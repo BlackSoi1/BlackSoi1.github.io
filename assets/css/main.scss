@@ -30,12 +30,38 @@ html, body { background: #fff !important; }
   text-align: center;
 }
 
-.author-card .author__avatar { margin-bottom: 16px; }
+.author-card .author__avatar {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .author-card .author__avatar img {
-  border-radius: 50%;
-  width: 120px; height: 120px; object-fit: cover;
-  border: 3px solid #f5f5f7;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  border-radius: 50% !important;
+  width: 120px !important;
+  height: 120px !important;
+  object-fit: cover !important;
+  border: 3px solid #f5f5f7 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08) !important;
+  display: block !important;
+  aspect-ratio: 1 / 1 !important;  /* 确保是正圆形 */
+  margin: 0 auto !important;  /* 居中 */
+  transition: none !important;  /* 禁用所有过渡效果 */
+  opacity: 1 !important;  /* 确保完全不透明 */
+  filter: none !important;  /* 移除所有滤镜 */
+  transform: none !important;
+}
+/* 强制覆盖所有hover效果 */
+.author-card .author__avatar img:hover,
+.author-card .author__avatar:hover img,
+.author__avatar img:hover,
+.author__avatar:hover img {
+  transform: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  border: 3px solid #f5f5f7 !important;
+  transition: none !important;
 }
 
 .author-card .author__name {
@@ -62,7 +88,7 @@ html, body { background: #fff !important; }
   padding: 0;
 }
 
-/* 每一行按钮 */
+/* 每一行按钮 - 常亮状态 */
 .author-card .sidebar-links li > a {
   display: inline-flex;
   align-items: center;
@@ -72,13 +98,13 @@ html, body { background: #fff !important; }
   width: 100%;
   max-width: 260px;
   margin: 0 auto;
-  border: 1px solid #e5e5ea;
+  border: 1px solid #d2d2d7;
   border-radius: 12px;
-  background: #fff;
-  color: #1d1d1f;
+  background: #f5f5f7;
+  color: #0066cc;
   font-weight: 600;
   text-decoration: none;
-  transition: background .15s ease, border-color .15s ease, color .15s ease;
+  transition: none;
   box-shadow: none;
 }
 
@@ -100,11 +126,7 @@ html, body { background: #fff !important; }
   text-overflow: ellipsis;
 }
 
-.author-card .sidebar-links li > a:hover {
-  background: #f5f5f7;
-  border-color: #d2d2d7;
-  color: #0066cc;
-}
+/* 移除hover效果 */
 
 /* 彻底清掉旧的作者链接样式影响（防止胶囊/阴影残留） */
 .author-card .author__urls li { border: 0; padding: 0; }
@@ -143,7 +165,14 @@ html, body { background: #fff !important; }
   font-size: 15px;               /* 统一字号 */
 }
 
-/* ============ 隐藏左上角汉堡图标 ============ */
+/* ============ 隐藏整个顶部导航栏 ============ */
+.masthead {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .greedy-nav button {
   display: none !important;
 }
