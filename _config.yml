@@ -12,7 +12,7 @@ description: "Ph.D. student at HKU"
 
 url: "https://blacksoi1.github.io"   # 你的 Pages 域名
 baseurl: ""                           # 根路径
-repository: "BlackSoi1/BlackSoi1.github.io"
+repository: "BlackSoi1/xiaolong-li"
 
 # ─────────────────────────────────────────────────────────
 # Author (左侧栏数据；详细字段你也可放 _data/authors.yml)
