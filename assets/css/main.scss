@@ -250,3 +250,35 @@ article.page {
   mix-blend-mode: normal !important;
   opacity: 1 !important;
 }
+/* ==== Author Card 永远常亮（兜底，放在 main.scss 最末尾） ==== */
+.sidebar .author__avatar img,
+.author-card .author__avatar img,
+.author__avatar img,
+.sidebar .author__avatar img:hover,
+.author-card .author__avatar img:hover,
+.author__avatar img:hover {
+  -webkit-filter: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  transition: none !important;
+}
+
+/* 卡片本体及 hover 不再变暗 */
+.sidebar .author-card,
+.author-card,
+.sidebar .author-card:hover,
+.author-card:hover {
+  -webkit-filter: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+/* 保险：卡片内所有子元素也不受滤镜/混合模式影响 */
+.author-card *, .author-card *::before, .author-card *::after {
+  -webkit-filter: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+}

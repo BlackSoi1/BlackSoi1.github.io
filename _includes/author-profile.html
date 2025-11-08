@@ -1,15 +1,18 @@
-<!-- CUSTOM AUTHOR CARD -->
+<!-- CUSTOM AUTHOR CARD (Fixed Bright Version) -->
 {% comment %}
 Custom author card for Minimal Mistakes
 Expect site.data.authors[page.author] OR site.author
+Put this file at: _includes/author-profile.html
 {% endcomment %}
+
 {% if page.author and site.data.authors[page.author] %}
   {% assign author = site.data.authors[page.author] %}
 {% else %}
   {% assign author = site.author %}
 {% endif %}
 
-<div itemscope itemtype="http://schema.org/Person" class="author-card">
+<div itemscope itemtype="http://schema.org/Person" class="author-card" 
+     style="-webkit-filter:none!important;filter:none!important;opacity:1!important;transition:none!important;mix-blend-mode:normal!important;">
 
   <div class="author__avatar">
     {% if author.avatar contains "://" %}
@@ -18,7 +21,7 @@ Expect site.data.authors[page.author] OR site.author
         alt="{{ author.name }}"
         itemprop="image"
         loading="lazy"
-        style="filter:none !important;-webkit-filter:none !important;opacity:1 !important;mix-blend-mode:normal !important;transition:none !important;transform:none !important;"
+        style="filter:none!important;-webkit-filter:none!important;opacity:1!important;mix-blend-mode:normal!important;transition:none!important;transform:none!important;"
       >
     {% else %}
       <img
@@ -26,7 +29,7 @@ Expect site.data.authors[page.author] OR site.author
         alt="{{ author.name }}"
         itemprop="image"
         loading="lazy"
-        style="filter:none !important;-webkit-filter:none !important;opacity:1 !important;mix-blend-mode:normal !important;transition:none !important;transform:none !important;"
+        style="filter:none!important;-webkit-filter:none!important;opacity:1!important;mix-blend-mode:normal!important;transition:none!important;transform:none!important;"
       >
     {% endif %}
   </div>
@@ -50,18 +53,33 @@ Expect site.data.authors[page.author] OR site.author
       {% if author.github %}
       <li>
         <a href="https://github.com/{{ author.github }}" target="_blank" rel="noopener" title="GitHub">
-          <img src="/edu_logo/GitHub.png" alt="">
+          <img src="/edu_logo/GitHub.png" alt="GitHub icon">
           <span>GitHub</span>
         </a>
       </li>
       {% endif %}
 
       <li>
-        <a href="https://scholar.google.com/citations?hl=en&user=SzdIs0kAAAAJ" target="_blank" rel="noopener" title="Google Scholar">
-          <img src="/edu_logo/icons8-google-scholar-48.png" alt="">
+        <a href="https://scholar.google.com/citations?hl=en&user=SzdIs0kAAAAJ"
+           target="_blank" rel="noopener" title="Google Scholar">
+          <img src="/edu_logo/icons8-google-scholar-48.png" alt="Google Scholar icon">
           <span>Google Scholar</span>
         </a>
       </li>
     </ul>
   </div>
 </div>
+
+<style>
+/* 最后再加一层兜底 CSS 确保灰度彻底关闭 */
+.author-card,
+.author-card:hover,
+.author__avatar img,
+.author__avatar img:hover {
+  -webkit-filter: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+  mix-blend-mode: normal !important;
+}
+</style>
