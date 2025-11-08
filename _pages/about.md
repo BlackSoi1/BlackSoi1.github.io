@@ -1,11 +1,12 @@
 ---
 permalink: /
-title: ""              # 置空以只显示 site.title（Xiaolong Li）
+title: ""              # 仅显示站点名（Xiaolong Li）
 excerpt: "Xiaolong Li"
 author_profile: true
 redirect_from:
   - /about/
   - /about.html
+layout: single
 ---
 
 <style>
@@ -15,34 +16,33 @@ redirect_from:
   --link:#0066cc;
   --line:#d2d2d7;
   --card:#ffffff;
-  --page-bg:#fff;
   --shadow:0 6px 14px rgba(0,0,0,.03);
   --radius:14px;
 }
 
+/* 基础排版（更紧凑） */
 .page__content{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",
                Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   color:var(--text);
   background:transparent;
   padding:4px;
-  font-size:15px;          /* 正文整体稍小 */
+  font-size:15px;
   line-height:1.6;
 }
-
-.page__content h1{font-size:32px;margin-bottom:6px;}
+.page__content h1{font-size:32px;margin:0 0 6px;}
 .page__content h2{font-size:20px;font-weight:700;margin:20px 0 10px;}
-.page__content h3{font-size:18px;}
+.page__content h3{font-size:18px;margin:12px 0 6px;}
+.page__content a{color:var(--link);text-decoration:none;}
+.page__content a:hover{text-decoration:underline;}
 
-.hr{height:0.5px;background:#eee;border:0;margin:16px 0}
-
-/* 顶部介绍 */
-.hero{margin-top:6px;margin-bottom:10px;}
+/* 顶部简介 */
+.hero{margin:0 0 10px;}
 .hero h1{font-size:34px;font-weight:700;margin:0 0 6px;}
 .hero .sub{font-size:15px;line-height:1.6;color:var(--muted);}
 .hero .mono{font-weight:600;color:var(--text);}
 
-/* 卡片整体收窄 padding + 阴影更轻 */
+/* 白卡片 */
 .card{
   background:var(--card);
   border:1px solid var(--line);
@@ -51,18 +51,19 @@ redirect_from:
   padding:14px 16px;
 }
 
-/* Education */
+/* Education：左文/中日期/右logo */
 .edu-row{
   display:grid;
-  grid-template-columns:1fr minmax(0,max-content) 80px; /* 缩短 logo 列宽 */
-  column-gap:6px;
+  grid-template-columns:1fr auto auto;
+  column-gap:12px;
   align-items:center;
   padding:10px 0;
 }
 .edu-title{font-weight:600;font-size:16px;margin:0 0 2px;}
 .edu-sub{font-style:italic;color:var(--muted);font-size:14px;margin:0;}
-.edu-date{text-align:left;font-weight:600;color:#3d3d40;font-size:14px;}
-.logo{height:40px;object-fit:contain;display:block;}
+.edu-date{text-align:right;font-weight:600;color:#3d3d40;font-size:14px;white-space:nowrap;}
+.edu-right{text-align:right;}
+.logo{height:40px;object-fit:contain;display:block;margin-left:auto;}
 .logo.ubc{transform:scale(1.1);transform-origin:right center;}
 
 /* Publications */
@@ -72,7 +73,7 @@ redirect_from:
 .pub-authors{color:var(--muted);font-size:14px;}
 .pub-venue{color:var(--link);font-weight:600;font-size:14px;}
 
-/* 按钮胶囊 */
+/* 银灰胶囊按钮 */
 .chips{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;}
 .chip{
   display:inline-block;padding:6px 12px;border-radius:999px;
@@ -84,33 +85,92 @@ redirect_from:
 .chip:hover{transform:translateY(-1px);background:#f8f8fa;}
 
 .item + .item{border-top:1px solid var(--line);padding-top:10px;margin-top:10px;}
-.page__content a{color:var(--link);text-decoration:none;}
-.page__content a:hover{text-decoration:underline;}
 
+/* —— 修复顶部空白 & 正文右移 —— */
+.initial-content{padding-top:8px !important;margin-top:0 !important;}
+.page__hero,.page__hero--overlay{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;}
+.layout--single .page__inner-wrap{padding-top:0 !important;margin-top:0 !important;}
+.page__content{margin-top:0 !important;}
+
+/* 强制隐藏空的 header 和 page__title */
+.page__inner-wrap > header{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;}
+.page__title{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;line-height:0 !important;}
+
+/* 彻底消除顶部留白 */
+#main{
+  margin-top:0 !important;
+  padding-top:0.5em !important;
+}
+article.page{margin-top:0 !important;padding-top:0 !important;}
+.sidebar{margin-top:0 !important;padding-top:0 !important;}
+
+/* 主内容容器（与 author card 对齐） */
+.content-container{
+  background:transparent;
+  border:none;
+  border-radius:16px;
+  box-shadow:none;
+  padding:32px;
+  margin:0;
+  width:100%;  /* 填满父容器宽度 */
+  max-width:1200px;  /* 限制最大宽度 */
+  box-sizing:border-box;  /* 确保padding计算在width内 */
+}
+
+/* 确保 page__content 不会有多余的 padding，并填满宽度 */
+.page__content{
+  padding:0 !important;
+  width:100% !important;
+  max-width:none !important;
+}
+
+/* 确保 article.page 也填满可用宽度 */
+article.page{
+  width:100% !important;
+}
+
+/* 强制让sidebar和page顶部对齐 */
+@media (min-width:64em){
+  #main{
+    display:flex !important;
+    align-items:flex-start !important;
+    gap:0 !important;
+    max-width: 1800px !important;  /* 更大的最大宽度 */
+    width: 100% !important;
+    padding-left: 2em !important;
+    padding-right: 2em !important;
+  }
+
+  .sidebar{
+    flex:0 0 260px !important;  /* 减小sidebar到260px */
+    margin-top:0 !important;
+    padding-top:0 !important;
+    margin-right:30px !important;  /* 增加间距 */
+  }
+
+  article.page{
+    flex:1 1 0 !important;  /* 关键：flex-basis设为0让它填满剩余空间 */
+    margin-top:0 !important;
+    padding-top:0 !important;
+    margin-left:0 !important;
+    max-width: none !important;
+    min-width: 0 !important;  /* 允许收缩 */
+  }
+
+  /* 强制移除page__inner-wrap的宽度限制 */
+  .page__inner-wrap{
+    max-width: none !important;
+    width: 100% !important;
+  }
+}
+
+/* 移动端堆叠 */
 @media (max-width:720px){
   .edu-row{grid-template-columns:1fr;row-gap:6px;}
-  .edu-right{justify-content:flex-start;}
-}
-
-/* 1) 隐藏左上角汉堡菜单（没有导航时不显示） */
-.masthead .greedy-nav__toggle { 
-  display: none !important; 
-}
-
-/* 2) 桌面端增大左栏与正文的间距 */
-@media (min-width: 1024px) {
-  /* 给右侧主列加一个向右的安全间距 */
-  .page { 
-    margin-left: 22px;   /* 想更靠右可调到 26~32px */
-  }
-  
-  /* 如果你的主题在 .sidebar 上没有外边距，可同时给左栏一个右外边距，间距更自然 */
-  .sidebar { 
-    margin-right: 6px;   /* 与上面的 22px 配合形成更舒适的 gutter */
-  }
 }
 </style>
 
+<div class="content-container">
 
 <div class="hero">
   <h1>Xiaolong Li</h1>
@@ -235,3 +295,5 @@ redirect_from:
 </div>
 
 <p style="color:var(--muted);font-style:italic">Last updated: Nov 2025</p>
+
+</div> <!-- /content-container -->

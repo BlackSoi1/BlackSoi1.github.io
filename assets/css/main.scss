@@ -148,3 +148,63 @@ html, body { background: #fff !important; }
 .author-card .sidebar-links li:last-child > a span {
   font-size: clamp(12px, 0.9rem, 14px);
 }
+
+/* ============ 隐藏左上角汉堡图标 ============ */
+.greedy-nav button {
+  display: none !important;
+}
+
+/* ============ 增加 Author Card 与正文之间的横向距离 ============ */
+@media (min-width: 64em) {
+  .sidebar {
+    margin-right: 3em;  /* 增加右边距，拉开与正文的距离 */
+  }
+
+  .page {
+    padding-left: 2em;  /* 增加左内边距 */
+  }
+}
+
+/* ============ 彻底解决顶部留白问题 ============ */
+/* 1. 减少主内容区域的上边距 */
+#main {
+  margin-top: 0.5em !important;
+}
+
+/* 2. 隐藏空的 page__hero */
+.page__hero, .page__hero--overlay {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 3. 移除 .page__inner-wrap 的顶部空隙 */
+.page__inner-wrap {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* 4. 强制隐藏空的 page__title（这是导致留白的真正元凶） */
+.page__title {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+}
+
+/* 5. 彻底移除 header 的所有间距和显示 */
+.page__inner-wrap > header {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+}
+
+/* 6. 移除article.page的顶部间距 */
+article.page {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
