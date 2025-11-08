@@ -179,6 +179,9 @@ article.page{
     advised by <a href="https://www.reynold.hku.hk/" target="_blank">Professor Reynold C.K. Cheng</a>.
     My research focuses on <span class="mono">data-centric code generation</span>: Text-to-SQL, code agents, and automated data science workflows.
   </p>
+  <p class="sub" style="margin-top:8px;">
+    <strong>Contact:</strong> xia01ong[AT]connect.hku.hk
+  </p>
 </div>
 
 <h2>Education</h2>
