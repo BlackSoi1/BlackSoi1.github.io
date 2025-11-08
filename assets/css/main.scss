@@ -231,3 +231,25 @@ article.page {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+
+/* --- 去掉头像灰色 hover 效果 --- */
+.author__avatar img {
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+/* --- 如果卡片整体变亮，也一并取消 --- */
+.author-card {
+  filter: none !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 可选: 让它看起来微微浮起 */
+  transition: none !important;
+}
+
+/* 防止 hover 改变亮度 */
+.author-card:hover,
+.author__avatar img:hover {
+  filter: none !important;
+  opacity: 1 !important;
+}
