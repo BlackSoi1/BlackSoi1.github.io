@@ -112,9 +112,9 @@ article.page{margin-top:0 !important;padding-top:0 !important;}
   box-shadow:none;
   padding:32px;
   margin:0;
-  width:100%;  /* 填满父容器宽度 */
-  max-width:1200px;  /* 限制最大宽度 */
-  box-sizing:border-box;  /* 确保padding计算在width内 */
+  width:100%;
+  max-width:1200px;
+  box-sizing:border-box;
 }
 
 /* 确保 page__content 不会有多余的 padding，并填满宽度 */
@@ -125,9 +125,7 @@ article.page{margin-top:0 !important;padding-top:0 !important;}
 }
 
 /* 确保 article.page 也填满可用宽度 */
-article.page{
-  width:100% !important;
-}
+article.page{width:100% !important;}
 
 /* 强制让sidebar和page顶部对齐 */
 @media (min-width:64em){
@@ -135,38 +133,60 @@ article.page{
     display:flex !important;
     align-items:flex-start !important;
     gap:0 !important;
-    max-width: 1800px !important;  /* 更大的最大宽度 */
-    width: 100% !important;
-    padding-left: 2em !important;
-    padding-right: 2em !important;
+    max-width:1800px !important;
+    width:100% !important;
+    padding-left:2em !important;
+    padding-right:2em !important;
   }
-
   .sidebar{
-    flex:0 0 260px !important;  /* 减小sidebar到260px */
+    flex:0 0 260px !important;
     margin-top:0 !important;
     padding-top:0 !important;
-    margin-right:30px !important;  /* 增加间距 */
+    margin-right:30px !important;
   }
-
   article.page{
-    flex:1 1 0 !important;  /* 关键：flex-basis设为0让它填满剩余空间 */
+    flex:1 1 0 !important;
     margin-top:0 !important;
     padding-top:0 !important;
     margin-left:0 !important;
-    max-width: none !important;
-    min-width: 0 !important;  /* 允许收缩 */
+    max-width:none !important;
+    min-width:0 !important;
   }
-
-  /* 强制移除page__inner-wrap的宽度限制 */
-  .page__inner-wrap{
-    max-width: none !important;
-    width: 100% !important;
-  }
+  .page__inner-wrap{max-width:none !important;width:100% !important;}
 }
 
 /* 移动端堆叠 */
 @media (max-width:720px){
   .edu-row{grid-template-columns:1fr;row-gap:6px;}
+}
+
+/* ==== Author Card 常亮补丁 ==== */
+.sidebar .author__avatar img,
+.author-card .author__avatar img,
+.author__avatar img,
+.sidebar .author__avatar img:hover,
+.author-card .author__avatar img:hover,
+.author__avatar img:hover {
+  -webkit-filter:none !important;
+  filter:none !important;
+  opacity:1 !important;
+  mix-blend-mode:normal !important;
+  transition:none !important;
+}
+.sidebar .author-card,
+.author-card,
+.sidebar .author-card:hover,
+.author-card:hover {
+  -webkit-filter:none !important;
+  filter:none !important;
+  opacity:1 !important;
+  transition:none !important;
+}
+.author-card *, .author-card *::before, .author-card *::after {
+  -webkit-filter:none !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  opacity:1 !important;
 }
 </style>
 
